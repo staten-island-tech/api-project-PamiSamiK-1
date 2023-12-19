@@ -22,3 +22,52 @@ document.querySelector('#app').innerHTML = `
 `
 
 setupCounter(document.querySelector('#counter'))
+
+function greet(name){
+  const greetPromise = newPromise(function(resolve,rejected){
+      resolve(`Hello ${name}`);
+  });
+  return greetPromise;
+}
+const nuggies = greet("Nuggies");
+nuggies.then((result) =>{
+console.log(result);
+
+
+});
+
+const URL = ''
+async function getData(URL){
+  try{
+
+ 
+  const response= await fetch(URL)
+  console.log(response);
+  if(response.status !=200){
+      throw new Error(response.statusText);
+  }
+  const data =await response.json();
+  docoument.querySelector("h1").textContent = data.content;
+  docoument.querySelector("h2").textContent = data.author;
+}catch(error){
+  document.querySelector("h1).textContent =error")    
+}
+}
+
+getData(URL);
+
+const URL= "https://any-api.com/nba_com/nba_com/docs/_allstarballotpredictor"
+
+async function getData(URL){
+    try {
+        const response = await fetch(URL)
+        const data = await response.json()
+        console.log(data)
+    }
+}
+const DOMSelectors = {
+button:document.querySelector(),
+input:document.querySelector()
+
+
+}
