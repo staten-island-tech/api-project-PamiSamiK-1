@@ -1,7 +1,7 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
+import javascriptLogo from './javascript.svg';
+import viteLogo from './vite.svg';
+import { setupCounter } from './counter.js';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -19,55 +19,74 @@ document.querySelector('#app').innerHTML = `
       Click on the Vite logo to learn more
     </p>
   </div>
-`
+`;
 
-setupCounter(document.querySelector('#counter'))
+TODAY = datetime.today()
+BASE_URL = 'http://stats.nba.com/stats/{endpoint}'
+HEADERS = {
+    'user-agent': ('Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'),  # noqa: E501
+    'Dnt': ('1'),
+    'Accept-Encoding': ('gzip, deflate, sdch'),
+    'Accept-Language': ('en'),
+    'origin': ('http://stats.nba.com')
+    }
 
-function greet(name){
-  const greetPromise = newPromise(function(resolve,rejected){
-      resolve(`Hello ${name}`);
+
+
+
+
+
+
+
+
+setupCounter(document.querySelector('#counter'));
+
+function greet(name) {
+  return new Promise(function(resolve, reject) {
+    resolve(`Hello ${name}`);
   });
-  return greetPromise;
 }
+
 const nuggies = greet("Nuggies");
-nuggies.then((result) =>{
-console.log(result);
-
-
+nuggies.then((result) => {
+  console.log(result);
 });
 
-const URL = ''
-async function getData(URL){
-  try{
-
- 
-  const response= await fetch(URL)
-  console.log(response);
-  if(response.status !=200){
+const URL = ''; // Replace with your URL
+async function getData(URL) {
+  try {
+    const response = await fetch(URL);
+    console.log(response);
+    if (response.status !== 200) {
       throw new Error(response.statusText);
+    }
+    const data = await response.json();
+    document.querySelector("h1").textContent = data.content;
+    document.querySelector("h2").textContent = data.author;
+  } catch (error) {
+    document.querySelector("h1").textContent = error;
   }
-  const data =await response.json();
-  docoument.querySelector("h1").textContent = data.content;
-  docoument.querySelector("h2").textContent = data.author;
-}catch(error){
-  document.querySelector("h1).textContent =error")    
-}
 }
 
 getData(URL);
 
-const URL= "https://any-api.com/nba_com/nba_com/docs/_allstarballotpredictor"
+const apiURL = "http://stats.nba.com";
 
-async function getData(URL){
-    try {
-        const response = await fetch(URL)
-        const data = await response.json()
-        console.log(data)
-    }
+async function fetchAPIData(apiURL) {
+  try {
+    const response = await fetch(apiURL);
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error fetching API data:", error);
+  }
 }
+
+fetchAPIData(apiURL);
+
 const DOMSelectors = {
-button:document.querySelector(),
-input:document.querySelector()
+  button: document.querySelector('#yourButtonSelector'), // Replace with your valid selector
+  input: document.querySelector('#yourInputSelector'), // Replace with your valid selector
+};
 
 
-}
