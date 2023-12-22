@@ -1,14 +1,13 @@
 
 document.querySelector('#app').innerHTML = `
-  <div>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
+<div id="question-container">
+  <h2>Would You Rather...</h2>
+  <div id="options">
+    <button id="option1">Option 1</button>
+    <button id="option2">Option 2</button>
   </div>
+</div>
+
 `;
 
 
@@ -34,23 +33,22 @@ nuggies.then((result) => {
 });
 
 const URL = 'https://www.balldontlie.io/api/v1/players'; // Replace with your URL
-async function getData(URL) {
+async function fetchPlayers(URL) {
   try {
-    const response = await fetch(URL);
+    const response = await fetch(playerAPI);
     console.log(response);
     if (response.status !== 200) {
       throw new Error(response.statusText);
     }
     const data = await response.data.json();
     console.log(data)
-    document.querySelector("h1").textContent = data.content;
-    document.querySelector("h2").textContent = data.author;
+    document.querySelector("h1").textContent = data.player;
+    document.querySelector("h2").textContent = data.height;
   } catch (error) {
     document.querySelector("h1").textContent = error;
   }
 }
 
-getData(URL);
 
 
 async function fetchAPIData(URL) {
@@ -65,9 +63,6 @@ async function fetchAPIData(URL) {
 
 fetchAPIData(URL);
 
-const DOMSelectors = {
-  button: document.querySelector('#yourButtonSelector'), // Replace with your valid selector
-  input: document.querySelector('#yourInputSelector'), // Replace with your valid selector
-};
+
 
 
