@@ -37,3 +37,19 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1); 
     transition: all 0.3s ease;
   }
+  .card:hover .card-desc {
+    display: block;
+ }
+
+ .card:hover {
+    opacity: 0.8;
+    background-color: #FFA500;
+    transform: scale(1.1);
+    border-color: #000000;
+    animation: pulse 1s infinite; 
+ }
+
+ .card:hover .card-title,
+ .card:hover .card-desc {
+    color: #ededed;
+ }
