@@ -13,43 +13,36 @@ body {
     text-align: center;
   }
 
-  #options button {
-    background-color: #FFA500; 
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  .card {
+  #options {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    border: 2px solid transparent; 
-    padding: 15px; 
-    margin: 20px;
-    position: relative;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  #option1,
+  #option2 {
+    background-color: #FFA500;
+    color: white;
+    padding: 30px 0px;
+    border: none;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 40px rgba(0, 0, 0, 0.1); 
+    margin: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 300px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: all 0.3s ease;
   }
-  .card:hover .card-desc {
-    display: block;
- }
-
- .card:hover {
+  
+  #option1:hover,
+  #option2:hover {
     opacity: 0.8;
-    background-color: #FFA500;
-    transform: scale(1.1);
-    border-color: #000000;
-    animation: pulse 1s infinite; 
- }
+    background-color: #FF8000;
+    transform: scale(1.05);
+  }
 
- .card:hover .card-title,
- .card:hover .card-desc {
-    color: #ededed;
- }
+  
