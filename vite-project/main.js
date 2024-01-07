@@ -9,25 +9,31 @@ async function fetchRandomPlayers() {
    }
   
    const data = await response.json();
-   const fetchedPlayers = data.data; // Rename to avoid conflicts with 'players' variable
+   const fetchedPlayers = data.data; 
 
+   
    players.player1 = getRandomPlayer(fetchedPlayers);
    players.player2 = getRandomPlayer(fetchedPlayers);
    displayPlayers(players.player1, players.player2);
 
-   // Set up event listeners after players are displayed
+   
+   
+   
    document.getElementById('option1').addEventListener('click', () => choosePlayer(players.player1));
    document.getElementById('option2').addEventListener('click', () => choosePlayer(players.player2));
-
  } catch (error) {
    console.error("Error fetching player data:", error);
  }
 }
 
+
+
 function getRandomPlayer(players) {
  const randomIndex = Math.floor(Math.random() * players.length);
  return players[randomIndex];
 }
+
+
 
 function displayPlayers(player1, player2) {
  const playerInfo1 = `${player1.first_name} ${player1.last_name} (${player1.team.full_name})`;
@@ -38,8 +44,51 @@ function displayPlayers(player1, player2) {
 }
 
 function choosePlayer(player) {
+  
  console.log(`You chose ${player.first_name} ${player.last_name}`);
  fetchRandomPlayers();
 }
 
 fetchRandomPlayers();
+
+
+
+//make cards
+
+
+
+
+
+function createPlayerCard(player) {
+  return `
+    <div class="card">
+      <h3>${player.first_name} ${player.last_name}</h3>
+      <p>Team: ${player.team.full_name}</p>
+    </div>
+  `;
+}
+
+
+
+async function displayAllPlayers() {
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+  
+    const data = await response.json();
+    const fetchedPlayers = data.data;
+
+    let galleryHTML = '';
+    fetchedPlayers.forEach(player => {
+      galleryHTML += createPlayerCard(player);
+    });
+
+    document.getElementById('playerGallery').innerHTML = galleryHTML;
+  } catch (error) {
+    console.error("Error fetching player data:", error);
+  }
+}
+
+window.onload = displayAllPlayers;

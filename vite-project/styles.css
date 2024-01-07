@@ -22,8 +22,8 @@ body {
   
   #option1,
   #option2 {
-    background-color: #FFA500;
-    color: white;
+    background-color: #FF;
+    color: #FF8000;
     padding: 30px 0px;
     border: none;
     border-radius: 15px;
@@ -45,4 +45,35 @@ body {
     transform: scale(1.05);
   }
 
+
+  #playerGallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
   
+  .card {
+    background-color: #FF8000;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color:rgb(110, 30, 144);
+  
+  
+  }
+  
+  .card p {
+    margin: 0;
+    color:black;
+    font-size: 1rem;
+
+  }
