@@ -1,79 +1,75 @@
-
 body {
-    background-image: url('ball.jpg'); 
-    background-size: cover;
-    color: white;
-    font-family: 'Arial', sans-serif;
-  }
+  background-image: url('ball.jpg');
+  background-size: cover;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
 
-  #question-container {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-  }
+#question-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
 
-  #options {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  #option1,
-  #option2 {
-    background-color: #FF;
-    color: #FF8000;
-    padding: 30px 0px;
-    border: none;
-    border-radius: 15px;
-    margin: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    width: 300px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-  }
-  
-  #option1:hover,
-  #option2:hover {
-    opacity: 0.8;
-    background-color: #FF8000;
-    transform: scale(1.05);
-  }
+#options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+#option1,
+#option2 {
+  background-color: #FF8000;
+  color: #1a1a1a;
+  font-size: 1.4rem;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+  width: 250px;
+  height: 100px;
+  transition: all 0.3s ease;
+  outline: none;
+  font-family: 'Arial', sans-serif; 
+  font-weight: bold;
+ 
+}
 
 
-  #playerGallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-  
-  .card {
-    background-color: #FF8000;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 250px;
-    padding: 20px;
-    margin: 10px;
-    text-align: center;
-  }
-  
-  .card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    color:rgb(110, 30, 144);
-  
-  
-  }
-  
-  .card p {
-    margin: 0;
-    color:black;
-    font-size: 1rem;
+#option1:hover,
+#option2:hover {
+  opacity: 0.8;
+  background-color: #FF8000;
+  transform: scale(1.05);
+}
 
-  }
+#playerGallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #FF8000;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 250px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.card p {
+  margin: 0;
+  color: black;
+  font-size: 1rem;
+}

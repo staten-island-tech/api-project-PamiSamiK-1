@@ -14,7 +14,8 @@ async function fetchRandomPlayers() {
    
    players.player1 = getRandomPlayer(fetchedPlayers);
    players.player2 = getRandomPlayer(fetchedPlayers);
-   displayPlayers(players.player1, players.player2);
+   
+   showplayers(players.player1, players.player2);
 
    
    
@@ -35,7 +36,7 @@ function getRandomPlayer(players) {
 
 
 
-function displayPlayers(player1, player2) {
+function showplayers(player1, player2) {
  const playerInfo1 = `${player1.first_name} ${player1.last_name} (${player1.team.full_name})`;
  const playerInfo2 = `${player2.first_name} ${player2.last_name} (${player2.team.full_name})`;
 
@@ -43,11 +44,23 @@ function displayPlayers(player1, player2) {
  document.getElementById('option2').textContent = playerInfo2;
 }
 
-function choosePlayer(player) {
+
+
+
+function showchosenplayer(player) {
+  const playerName = `${player.first_name} ${player.last_name}`;
+  const chosenPlayerElement = document.getElementById('chosenPlayer');
   
- console.log(`You chose ${player.first_name} ${player.last_name}`);
- fetchRandomPlayers();
+  chosenPlayerElement.textContent = `You chose ${playerName}`;
 }
+
+
+function choosePlayer(player) {
+  console.log(`You chose ${player.first_name} ${player.last_name}`);
+  showchosenplayer(player); 
+  fetchRandomPlayers();
+}
+
 
 fetchRandomPlayers();
 
