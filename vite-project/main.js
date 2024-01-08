@@ -34,8 +34,6 @@ function getRandomPlayer(players) {
  return players[randomIndex];
 }
 
-
-
 function showplayers(player1, player2) {
  const playerInfo1 = `${player1.first_name} ${player1.last_name} (${player1.team.full_name})`;
  const playerInfo2 = `${player2.first_name} ${player2.last_name} (${player2.team.full_name})`;
