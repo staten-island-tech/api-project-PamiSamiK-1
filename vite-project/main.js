@@ -102,4 +102,52 @@ async function displayAllPlayers() {
   }
 }
 
-window.onload = displayAllPlayers;
+
+
+
+
+// Function to filter players by team
+async function filterByTeam(team) {
+  try {
+    const teamResponse = await fetch(`${API_URL}?team=${team}`);
+    if (!teamResponse.ok) {
+      throw new Error(teamResponse.statusText);
+    }
+
+    const teamData = await teamResponse.json();
+    const teamPlayers = teamData.data;
+
+    const filteredPlayer1 = getRandomPlayer(teamPlayers);
+    const filteredPlayer2 = getRandomPlayer(teamPlayers);
+
+    showplayers(filteredPlayer1, filteredPlayer2);
+
+    // displayAllPlayers 
+    await displayAllPlayers();
+  } catch (error) {
+    console.error("Error fetching team player data:", error);
+  }
+}
+// Create buttons for each team
+const teamsToFilter = ['IND', 'NYK', 'BOS', 'MEM', 'TOR', 'OKC', 'DET', 'LAC', 'GSW', 'PHI', 'UTA', 'DET', 'SAC', 'CLE', 'HOU', 'SAC', 'MEM', 'LAC', 'POR', 'BOS', 'CLE', 'ATL', 'ORL'];
+
+const teamButtonsContainer = document.getElementById('teamButtonsContainer');
+
+teamsToFilter.forEach(team => {
+  const button = document.createElement('button');
+  button.textContent = `Filter by ${team}`;
+  button.addEventListener('click', () => filterByTeam(team));
+  teamButtonsContainer.appendChild(button);
+});
+
+// ...
+
+window.onload = async () => {
+  try {
+    await fetchRandomPlayers(); // To initially fetch random players
+    await displayAllPlayers();
+  } catch (error) {
+    console.error("Error on page load:", error);
+  }
+};
+
