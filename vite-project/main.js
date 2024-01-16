@@ -1,9 +1,9 @@
-const URL = 'https://www.balldontlie.io/api/v1/players'; 
+const api = 'https://www.balldontlie.io/api/v1/players'; 
 
 
-async function fetchAPIData(URL) {
+async function fetchAPIData(api) {
   try {
-    const response = await fetch(URL)
+    const response = await fetch(api)
     if (!response.ok) {
       throw new Error(response.statusText);
     }
@@ -16,7 +16,7 @@ async function fetchAPIData(URL) {
     });
 
     document.getElementById('playerGallery').innerHTML = galleryHTML;
-    console.log(data);
+    //console.log(data);
   } catch (error) {
     console.error("Error fetching player data:", error);
     console.error("Error fetching API data:", error);
@@ -39,13 +39,13 @@ function showplayers(player1, player2) {
  
 
 
-fetchAPIData(URL);
+fetchAPIData(api);
 
 const players = {};
 
 async function fetchRandomPlayers() {
  try {
-   const response = await fetch(URL);
+   const response = await fetch(api);
    if (!response.ok) {
      throw new Error(response.statusText);
    }
@@ -72,7 +72,7 @@ async function fetchRandomPlayers() {
 
 async function displayAllPlayers() {
   try {
-    const response = await fetch(URL);
+    const response = await fetch(api);
     if (!response.ok) {
       throw new Error(response.statusText);
     }
@@ -96,7 +96,8 @@ async function displayAllPlayers() {
 
 function getRandomPlayer(players) {
  const randomIndex = Math.floor(Math.random() * players.length);
- return players[randomIndex];
+ const randomPlayer = players[randomIndex]
+ return randomPlayer;
 }
 
 
@@ -117,13 +118,15 @@ function showchosenplayer(player) {
 // Function to filter players by team
 async function filterByTeam(team) {
   try {
-    const teamResponse = await fetch(`${URL}?team=${team}`);
+    const teamResponse = await fetch(`${api}?team=${team}`);
     if (!teamResponse.ok) {
       throw new Error(teamResponse.statusText);
     }
-
+    
     const teamData = await teamResponse.json();
+    console.log(teamData)
     const teamPlayers = teamData.data;
+    console.log(teamPlayers)
 
     const filteredPlayer1 = getRandomPlayer(teamPlayers);
     const filteredPlayer2 = getRandomPlayer(teamPlayers);
@@ -157,7 +160,7 @@ window.onload = async () => {
   } catch (error) {
     console.error("Error on page load:", error);
   }}
-fetchAPIData(URL);
+fetchAPIData(api);
 
 const DOMSelectors = {
   button: document.querySelector('#yourButtonSelector'), 
@@ -165,7 +168,7 @@ const DOMSelectors = {
 };
 
 
-function injectCards(URL){
+function injectCards(api){
   DOMSelectors.gallery.innerHTML = '';
   DOMSelectors.gallery.insertAdjacentHTML("beforeend", `
     <div class="card">
